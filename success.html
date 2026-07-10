@@ -55,11 +55,6 @@
       <p id="totalBayar" class="text-2xl font-bold text-yellow-600">
     Rp 0
 </p>
-      </p>
-
-      <p class="text-sm text-gray-500 mt-2">
-        (Nanti bisa dibuat otomatis dari JavaScript)
-      </p>
 
     </div>
 
@@ -71,12 +66,14 @@
 
   </div>
 <script>
-const produk = JSON.parse(localStorage.getItem("checkoutProduk"));
+console.log("totalBayar:", localStorage.getItem("totalBayar"));
+console.log("checkoutProduk:", localStorage.getItem("checkoutProduk"));
 
-if (produk) {
-    document.getElementById("totalBayar").innerText =
-        "Rp " + produk.price.toLocaleString("id-ID");
-}
+const total = Number(localStorage.getItem("totalBayar"));
+
+document.getElementById("totalBayar").innerText =
+    "Rp " + total.toLocaleString("id-ID");
 </script>
+
 </body>
 </html>

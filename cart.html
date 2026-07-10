@@ -1,134 +1,175 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keranjang - Nailongholic.id</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+<title>Keranjang - Nailongholic.id</title>
 
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 
 <body class="bg-yellow-50">
 
-    <div class="max-w-5xl mx-auto p-6">
+<div class="max-w-5xl mx-auto p-6">
 
-        <h1 class="text-4xl font-bold text-center text-yellow-600 mb-8">
-            🛒 Keranjang Belanja
-        </h1>
+<h1 class="text-4xl font-bold text-center text-yellow-600 mb-8">
+🛒 Keranjang Belanja
+</h1>
 
-        <!-- Produk -->
-        <div class="bg-white rounded-2xl shadow-lg p-5 flex items-center gap-5">
+<div id="cartItems"></div>
 
-            <img src="gantungan.jpg"
-                 class="w-28 h-28 object-cover rounded-xl">
+<div class="bg-white rounded-2xl shadow-lg p-6 mt-8">
 
-            <div class="flex-1">
-                <h2 class="text-xl font-bold">
-                    Gantungan Nailong
-                </h2>
+<div class="flex justify-between text-xl font-bold">
+<span>Total Belanja</span>
 
-                <div class="flex items-center gap-3 mt-3">
-
-    <button onclick="kurangProduk()"
-        class="bg-yellow-400 hover:bg-yellow-500 text-white w-8 h-8 rounded-lg font-bold">
-        −
-    </button>
-
-    <span id="jumlahProduk" class="font-bold text-lg">
-        1
-    </span>
-
-    <button onclick="tambahProduk()"
-        class="bg-yellow-400 hover:bg-yellow-500 text-white w-8 h-8 rounded-lg font-bold">
-        +
-    </button>
+<span id="totalBelanja" class="text-yellow-600">
+Rp0
+</span>
 
 </div>
 
-                <p id="hargaProduk" class="text-yellow-600 text-2xl font-bold mt-2">
-    Rp75.000
-</p>
-            </div>
+<button
+onclick="goToCheckout()"
+class="w-full mt-6 bg-yellow-500 hover:bg-yellow-600 text-white py-4 rounded-xl text-lg font-bold">
 
-            <button
-                class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg">
-                Hapus
-            </button>
+Lanjut ke Checkout →
 
-        </div>
+</button>
 
-        <!-- Total -->
-        <div class="bg-white rounded-2xl shadow-lg p-6 mt-8">
+</div>
 
-            <div class="flex justify-between text-xl font-bold">
-                <span>Total Belanja</span>
-                <span id="totalBelanja" class="text-yellow-600">
-    Rp75.000
+<div class="text-center mt-6">
+
+<a href="index.html"
+class="text-yellow-600 font-semibold hover:underline">
+
+← Kembali Belanja
+
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+cart = cart.map(item=>({
+    ...item,
+    qty:item.qty || 1
+}));
+
+function renderCart(){
+
+let html="";
+let total=0;
+
+cart.forEach((item,index)=>{
+
+total += item.price * item.qty;
+
+html += `
+<div class="bg-white rounded-2xl shadow-lg p-5 flex items-center gap-5 mb-5">
+
+<img src="${item.image}"
+class="w-28 h-28 object-cover rounded-xl">
+
+<div class="flex-1">
+
+<h2 class="text-xl font-bold">
+${item.name}
+</h2>
+
+<div class="flex items-center gap-3 mt-3">
+
+<button onclick="kurang(${index})"
+class="bg-yellow-400 text-white w-8 h-8 rounded-lg">-</button>
+
+<span class="font-bold">
+${item.qty}
 </span>
-            </div>
 
-            <button
-                onclick="goToCheckout()"
-                class="w-full mt-6 bg-yellow-500 hover:bg-yellow-600 text-white py-4 rounded-xl text-lg font-bold">
+<button onclick="tambah(${index})"
+class="bg-yellow-400 text-white w-8 h-8 rounded-lg">+</button>
 
-                Lanjut ke Checkout →
-            </button>
+</div>
 
-        </div>
+<p class="text-yellow-600 text-2xl font-bold mt-2">
 
-        <!-- Tombol Kembali -->
-        <div class="text-center mt-6">
+Rp ${(item.price*item.qty).toLocaleString("id-ID")}
 
-            <a href="index.html"
-               class="text-yellow-600 font-semibold hover:underline">
-                ← Kembali Belanja
-            </a>
+</p>
 
-        </div>
+</div>
 
-    </div>
+<button
+onclick="hapus(${index})"
+class="bg-red-500 text-white px-4 py-2 rounded-lg">
 
-    <script>
+Hapus
 
-let jumlah = 1;
-const hargaSatuan = 75000;
+</button>
 
-function updateHarga(){
+</div>
+`;
 
-    document.getElementById("jumlahProduk").innerHTML = jumlah;
+});
 
-    let total = jumlah * hargaSatuan;
+document.getElementById("cartItems").innerHTML=html;
 
-    document.getElementById("hargaProduk").innerHTML =
-    "Rp " + total.toLocaleString("id-ID");
+document.getElementById("totalBelanja").innerHTML=
+"Rp "+total.toLocaleString("id-ID");
 
-    document.getElementById("totalBelanja").innerHTML =
-    "Rp " + total.toLocaleString("id-ID");
+localStorage.setItem("cart",JSON.stringify(cart));
 
 }
 
-function tambahProduk(){
-    jumlah++;
-    updateHarga();
+function tambah(index){
+
+cart[index].qty++;
+
+renderCart();
+
 }
 
-function kurangProduk(){
+function kurang(index){
 
-    if(jumlah > 1){
-        jumlah--;
-        updateHarga();
-    }
+if(cart[index].qty>1){
+
+cart[index].qty--;
+
+renderCart();
+
+}
+
+}
+
+function hapus(index){
+
+cart.splice(index,1);
+
+renderCart();
 
 }
 
 function goToCheckout(){
-    window.location.href = "checkout.html";
+
+localStorage.setItem("checkoutProduk",JSON.stringify(cart));
+
+window.location.href="checkout.html";
+
 }
+
+renderCart();
 
 </script>
 
 </body>
-</html>
+</html>ss

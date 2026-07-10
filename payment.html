@@ -23,17 +23,14 @@
 
         <div class="space-y-4">
 
-            <!-- Transfer Bank -->
+            <!-- Transfer -->
             <div onclick="selectMethod('Transfer Bank')"
-                 class="border-2 border-yellow-200 hover:border-yellow-500 rounded-xl p-5 cursor-pointer flex items-center gap-4">
+                class="border-2 border-yellow-200 hover:border-yellow-500 rounded-xl p-5 cursor-pointer flex items-center gap-4">
 
                 <i class="fa-solid fa-building-columns text-3xl text-yellow-500"></i>
 
                 <div>
-                    <h3 class="font-bold">
-                        Transfer Bank
-                    </h3>
-
+                    <h3 class="font-bold">Transfer Bank</h3>
                     <p class="text-gray-500 text-sm">
                         BCA • BNI • BRI • Mandiri
                     </p>
@@ -43,15 +40,12 @@
 
             <!-- E-Wallet -->
             <div onclick="selectMethod('E-Wallet')"
-                 class="border-2 border-yellow-200 hover:border-yellow-500 rounded-xl p-5 cursor-pointer flex items-center gap-4">
+                class="border-2 border-yellow-200 hover:border-yellow-500 rounded-xl p-5 cursor-pointer flex items-center gap-4">
 
                 <i class="fa-solid fa-wallet text-3xl text-yellow-500"></i>
 
                 <div>
-                    <h3 class="font-bold">
-                        E-Wallet
-                    </h3>
-
+                    <h3 class="font-bold">E-Wallet</h3>
                     <p class="text-gray-500 text-sm">
                         GoPay • OVO • DANA • ShopeePay
                     </p>
@@ -61,15 +55,12 @@
 
             <!-- COD -->
             <div onclick="selectMethod('COD')"
-                 class="border-2 border-yellow-200 hover:border-yellow-500 rounded-xl p-5 cursor-pointer flex items-center gap-4">
+                class="border-2 border-yellow-200 hover:border-yellow-500 rounded-xl p-5 cursor-pointer flex items-center gap-4">
 
                 <i class="fa-solid fa-box-open text-3xl text-yellow-500"></i>
 
                 <div>
-                    <h3 class="font-bold">
-                        Bayar di Tempat (COD)
-                    </h3>
-
+                    <h3 class="font-bold">Bayar di Tempat (COD)</h3>
                     <p class="text-gray-500 text-sm">
                         Bayar saat pesanan diterima.
                     </p>
@@ -79,14 +70,16 @@
 
         </div>
 
-        <!-- Ringkasan -->
+        <!-- Total -->
         <div class="bg-yellow-100 rounded-xl p-5 mt-8">
 
-            <div class="flex justify-between mb-2">
+            <div class="flex justify-between">
+
                 <span>Total Pembayaran</span>
 
-                <span class="font-bold text-xl text-yellow-700">
-                    Rp85.000
+                <span id="totalBayar"
+                    class="font-bold text-xl text-yellow-700">
+                    Rp0
                 </span>
 
             </div>
@@ -94,14 +87,14 @@
         </div>
 
         <button onclick="processPayment()"
-                class="w-full mt-6 bg-yellow-500 hover:bg-yellow-600 text-white py-4 rounded-xl text-lg font-bold">
+            class="w-full mt-6 bg-yellow-500 hover:bg-yellow-600 text-white py-4 rounded-xl text-lg font-bold">
 
             Bayar Sekarang
 
         </button>
 
         <a href="checkout.html"
-           class="block text-center mt-5 text-yellow-600 hover:underline font-semibold">
+            class="block text-center mt-5 text-yellow-600 hover:underline font-semibold">
 
             ← Kembali ke Checkout
 
@@ -115,29 +108,52 @@
 
 let selectedMethod = "";
 
+// pilih metode
 function selectMethod(method){
 
     selectedMethod = method;
 
-    alert("Metode pembayaran dipilih: " + method);
+    alert("Metode pembayaran dipilih : " + method);
 
 }
 
+// bayar
 function processPayment(){
 
-    if(selectedMethod === ""){
-
+    if(selectedMethod==""){
         alert("Silakan pilih metode pembayaran terlebih dahulu.");
-
         return;
-
     }
 
-    alert("Pembayaran berhasil menggunakan " + selectedMethod);
+    localStorage.setItem("paymentMethod", selectedMethod);
 
-    window.location.href = "success.html";
+    window.location.href="success.html";
 
 }
+
+// ================= HITUNG TOTAL =================
+
+const checkoutProduk =
+JSON.parse(localStorage.getItem("checkoutProduk")) || [];
+
+let total = 0;
+
+if(Array.isArray(checkoutProduk)){
+
+    checkoutProduk.forEach(item=>{
+        total += Number(item.price);
+    });
+
+}else{
+
+    total = Number(checkoutProduk.price || 0);
+
+}
+
+total += 10000;
+
+document.getElementById("totalBayar").innerHTML =
+"Rp " + total.toLocaleString("id-ID");
 
 </script>
 
