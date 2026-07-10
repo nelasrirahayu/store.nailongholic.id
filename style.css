@@ -1,0 +1,89 @@
+/* ================== UMUM ================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fefce8;
+}
+
+/* ================== GAMBAR ================== */
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* ================== PRODUK ================== */
+.product-card{
+    transition:0.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,.2);
+}
+
+/* ================== BUTTON ================== */
+button{
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.03);
+}
+
+/* ================== INPUT ================== */
+input,
+textarea{
+    outline:none;
+}
+
+input:focus,
+textarea:focus{
+    border:2px solid #eab308;
+}
+
+/* ================== SCROLLBAR ================== */
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#fff8dc;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#facc15;
+    border-radius:10px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#eab308;
+}
+
+/* ================== RESPONSIVE ================== */
+@media(max-width:768px){
+
+    nav .max-w-7xl{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .product-card img{
+        height:220px;
+        object-fit:cover;
+    }
+}
