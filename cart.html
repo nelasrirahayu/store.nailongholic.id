@@ -58,22 +58,11 @@ class="text-yellow-600 font-semibold hover:underline">
 </div>
 <script>
 
-// Hapus data keranjang lama (sementara untuk tes)
-localStorage.removeItem("cart");
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 cart = cart.map(item => ({
     ...item,
     qty: item.qty || 1
-}));
-<script>
-
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-cart = cart.map(item=>({
-    ...item,
-    qty:item.qty || 1
 }));
 
 function renderCart(){
