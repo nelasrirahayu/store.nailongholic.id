@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - Nailongholic.id</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="bg-yellow-50 min-h-screen">
+
+<div class="max-w-3xl mx-auto p-6">
+
+    <div class="bg-white rounded-2xl shadow-lg p-8">
+
+        <h1 class="text-3xl font-bold text-center text-yellow-600 mb-8">
+            💳 Pilih Metode Pembayaran
+        </h1>
+
+        <div class="space-y-4">
+
+            <!-- Transfer Bank -->
+            <div onclick="selectMethod('Transfer Bank')"
+                 class="border-2 border-yellow-200 hover:border-yellow-500 rounded-xl p-5 cursor-pointer flex items-center gap-4">
+
+                <i class="fa-solid fa-building-columns text-3xl text-yellow-500"></i>
+
+                <div>
+                    <h3 class="font-bold">
+                        Transfer Bank
+                    </h3>
+
+                    <p class="text-gray-500 text-sm">
+                        BCA • BNI • BRI • Mandiri
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- E-Wallet -->
+            <div onclick="selectMethod('E-Wallet')"
+                 class="border-2 border-yellow-200 hover:border-yellow-500 rounded-xl p-5 cursor-pointer flex items-center gap-4">
+
+                <i class="fa-solid fa-wallet text-3xl text-yellow-500"></i>
+
+                <div>
+                    <h3 class="font-bold">
+                        E-Wallet
+                    </h3>
+
+                    <p class="text-gray-500 text-sm">
+                        GoPay • OVO • DANA • ShopeePay
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- COD -->
+            <div onclick="selectMethod('COD')"
+                 class="border-2 border-yellow-200 hover:border-yellow-500 rounded-xl p-5 cursor-pointer flex items-center gap-4">
+
+                <i class="fa-solid fa-box-open text-3xl text-yellow-500"></i>
+
+                <div>
+                    <h3 class="font-bold">
+                        Bayar di Tempat (COD)
+                    </h3>
+
+                    <p class="text-gray-500 text-sm">
+                        Bayar saat pesanan diterima.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Ringkasan -->
+        <div class="bg-yellow-100 rounded-xl p-5 mt-8">
+
+            <div class="flex justify-between mb-2">
+                <span>Total Pembayaran</span>
+
+                <span class="font-bold text-xl text-yellow-700">
+                    Rp85.000
+                </span>
+
+            </div>
+
+        </div>
+
+        <button onclick="processPayment()"
+                class="w-full mt-6 bg-yellow-500 hover:bg-yellow-600 text-white py-4 rounded-xl text-lg font-bold">
+
+            Bayar Sekarang
+
+        </button>
+
+        <a href="checkout.html"
+           class="block text-center mt-5 text-yellow-600 hover:underline font-semibold">
+
+            ← Kembali ke Checkout
+
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+
+let selectedMethod = "";
+
+function selectMethod(method){
+
+    selectedMethod = method;
+
+    alert("Metode pembayaran dipilih: " + method);
+
+}
+
+function processPayment(){
+
+    if(selectedMethod === ""){
+
+        alert("Silakan pilih metode pembayaran terlebih dahulu.");
+
+        return;
+
+    }
+
+    alert("Pembayaran berhasil menggunakan " + selectedMethod);
+
+    window.location.href = "success.html";
+
+}
+
+</script>
+
+</body>
+</html>

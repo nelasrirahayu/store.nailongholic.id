@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nailongholic.id</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="bg-yellow-50">
+
+<!-- ================= NAVBAR ================= -->
+<nav class="bg-yellow-400 shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+        <!-- Logo -->
+        <div class="flex items-center gap-3">
+            <img src="image/logo.jpg"
+                 class="w-12 h-12 rounded-full object-cover">
+
+            <h1 class="text-2xl font-bold text-white">
+                Nailongholic.id
+            </h1>
+        </div>
+
+        <!-- Search -->
+        <div class="w-80 hidden md:block">
+            <input
+                type="text"
+                id="search"
+                placeholder="🔍 Cari produk..."
+                class="w-full px-4 py-2 rounded-xl outline-none"
+                onkeyup="searchProduct()">
+        </div>
+
+        <!-- Menu -->
+        <ul class="flex items-center gap-5 text-white font-semibold">
+
+            <li>
+                <a href="#beranda" class="hover:text-yellow-100">
+                    Beranda
+                </a>
+            </li>
+
+            <li>
+                <a href="#produk" class="hover:text-yellow-100">
+                    Produk
+                </a>
+            </li>
+
+            <li>
+                <a href="#ulasan" class="hover:text-yellow-100">
+                    Ulasan
+                </a>
+            </li>
+
+            <li>
+                <a href="#kontak" class="hover:text-yellow-100">
+                    Kontak
+                </a>
+            </li>
+<li>
+    <a href="login.html"
+       class="bg-white text-yellow-500 px-4 py-2 rounded-xl font-bold hover:bg-yellow-100">
+        <i class="fa-solid fa-user"></i> Login
+    </a>
+</li>
+            <li>
+                <a href="cart.html"
+                   class="bg-white text-yellow-500 px-4 py-2 rounded-xl font-bold">
+                    🛒
+                    <span id="cart-count">0</span>
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+<!-- ================= BANNER ================= -->
+<section class="bg-yellow-300">
+
+    <div class="max-w-6xl mx-auto px-6 py-12">
+
+        <div class="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between shadow-xl">
+
+            <!-- Teks -->
+            <div class="text-white">
+
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    💛 Koleksi Nailong Terbaru
+                </h1>
+
+                <p class="text-lg mb-6">
+                    Temukan gantungan, boneka, totebag, tumbler, dan berbagai merchandise Nailong favoritmu dengan harga terbaik!
+                </p>
+
+                <a href="#produk"
+                   class="bg-white text-yellow-500 px-6 py-3 rounded-xl font-bold hover:bg-yellow-100 transition">
+                    Belanja Sekarang
+                </a>
+
+            </div>
+
+            <!-- Gambar -->
+            <div class="mt-8 md:mt-0">
+                <img src="image/banner.jpg"
+     class="w-full max-w-md rounded-3xl shadow-lg">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= BERANDA ================= -->
+
+<section id="beranda" class="max-w-6xl mx-auto px-6 py-10">
+
+    <div class="text-center">
+
+        <img src="image/logo.jpg"
+             class="w-32 h-32 rounded-full mx-auto shadow-lg object-cover">
+
+        <h1 class="text-4xl font-bold mt-4">
+            Nailongholic.id
+        </h1>
+
+        <p class="text-yellow-700 mt-3 text-lg">
+            Temukan berbagai koleksi Nailong favoritmu dengan harga terbaik.
+            Produk lucu, berkualitas, dan bikin hari makin ceria! 💛
+        </p>
+
+    </div>
+
+    <!-- ================= PRODUK ================= -->
+
+    <h2 id="produk"
+        class="text-3xl font-bold text-center mt-16 mb-8 text-yellow-600">
+        Produk Terlaris
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Produk 1 -->
+<div class="product-card bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+    <img src="image/gantungan.jpg" class="w-full h-56 object-cover rounded-xl">
+
+    <h3 class="font-bold text-lg mt-4">Gantungan Nailong</h3>
+
+    <p class="text-yellow-600 text-2xl font-bold mt-2">
+        Rp75.000
+    </p>
+
+    <div class="flex items-center mt-2">
+        <span class="text-yellow-400">★★★★★</span>
+        <span class="ml-2 text-gray-500 text-sm">
+            4.9 (320 Terjual)
+        </span>
+    </div>
+
+    <div class="flex gap-2 mt-5">
+        <button onclick="addToCart(1)"
+            class="w-1/4 border-2 border-yellow-500 rounded-xl hover:bg-yellow-100">
+            🛒
+        </button>
+
+        <button onclick="buyNow(1)"
+            class="w-3/4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl py-2 font-bold">
+            Beli Sekarang
+        </button>
+    </div>
+</div>
+
+<!-- Produk 2 -->
+<div class="product-card bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+    <img src="image/bucket.jpg" class="w-full h-56 object-cover rounded-xl">
+
+    <h3 class="font-bold text-lg mt-4">Bucket Boneka Nailong</h3>
+
+    <p class="text-yellow-600 text-2xl font-bold mt-2">
+        Rp150.000
+    </p>
+
+    <div class="flex items-center mt-2">
+        <span class="text-yellow-400">★★★★★</span>
+        <span class="ml-2 text-gray-500 text-sm">
+            4.9 (320 Terjual)
+        </span>
+    </div>
+
+    <div class="flex gap-2 mt-5">
+        <button onclick="addToCart(2)"
+            class="w-1/4 border-2 border-yellow-500 rounded-xl hover:bg-yellow-100">
+            🛒
+        </button>
+
+        <button onclick="buyNow(2)"
+            class="w-3/4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl py-2 font-bold">
+            Beli Sekarang
+        </button>
+    </div>
+</div>
+
+<!-- Produk 3 -->
+<div class="product-card bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+    <img src="image/boneka.jpg" class="w-full h-56 object-cover rounded-xl">
+
+    <h3 class="font-bold text-lg mt-4">
+        Boneka Cemberut Nailong
+    </h3>
+
+    <p class="text-yellow-600 text-2xl font-bold mt-2">
+        Rp99.000
+    </p>
+
+    <div class="flex items-center mt-2">
+        <span class="text-yellow-400">★★★★★</span>
+        <span class="ml-2 text-gray-500 text-sm">
+            4.9 (320 Terjual)
+        </span>
+    </div>
+
+    <div class="flex gap-2 mt-5">
+        <button onclick="addToCart(3)"
+            class="w-1/4 border-2 border-yellow-500 rounded-xl hover:bg-yellow-100">
+            🛒
+        </button>
+
+        <button onclick="buyNow(3)"
+            class="w-3/4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl py-2 font-bold">
+            Beli Sekarang
+        </button>
+    </div>
+</div>
+<!-- Produk 4 -->
+<div class="product-card bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+    <img src="image/kipas.jpg" class="w-full h-56 object-cover rounded-xl">
+
+    <h3 class="font-bold text-lg mt-4">
+        Kipas Angin Portable Nailong
+    </h3>
+
+    <p class="text-yellow-600 text-2xl font-bold mt-2">
+        Rp350.000
+    </p>
+
+    <div class="flex items-center mt-2">
+        <span class="text-yellow-400">★★★★★</span>
+        <span class="ml-2 text-gray-500 text-sm">
+            4.9 (320 Terjual)
+        </span>
+    </div>
+
+    <div class="flex gap-2 mt-5">
+        <button onclick="addToCart(4)"
+            class="w-1/4 border-2 border-yellow-500 rounded-xl hover:bg-yellow-100">
+            🛒
+        </button>
+
+        <button onclick="buyNow(4)"
+            class="w-3/4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl py-2 font-bold">
+            Beli Sekarang
+        </button>
+    </div>
+</div>
+
+<!-- Produk 5 -->
+<div class="product-card bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+    <img src="image/mug.jpg" class="w-full h-56 object-cover rounded-xl">
+
+    <h3 class="font-bold text-lg mt-4">
+        Mug Kecil Nailong
+    </h3>
+
+    <p class="text-yellow-600 text-2xl font-bold mt-2">
+        Rp43.200
+    </p>
+
+    <div class="flex items-center mt-2">
+        <span class="text-yellow-400">★★★★☆</span>
+        <span class="ml-2 text-gray-500 text-sm">
+            3.9 (270 Terjual)
+        </span>
+    </div>
+
+    <div class="flex gap-2 mt-5">
+        <button onclick="addToCart(5)"
+            class="w-1/4 border-2 border-yellow-500 rounded-xl hover:bg-yellow-100">
+            🛒
+        </button>
+
+        <button onclick="buyNow(5)"
+            class="w-3/4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl py-2 font-bold">
+            Beli Sekarang
+        </button>
+    </div>
+</div>
+
+<!-- Produk 6 -->
+<div class="product-card bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+    <img src="image/pouch.jpg" class="w-full h-56 object-cover rounded-xl">
+
+    <h3 class="font-bold text-lg mt-4">
+        Pouch Makeup Nailong
+    </h3>
+
+    <p class="text-yellow-600 text-2xl font-bold mt-2">
+        Rp7.800
+    </p>
+
+    <div class="flex items-center mt-2">
+        <span class="text-yellow-400">★★★★☆</span>
+        <span class="ml-2 text-gray-500 text-sm">
+            4.0 (100 Terjual)
+        </span>
+    </div>
+
+    <div class="flex gap-2 mt-5">
+        <button onclick="addToCart(6)"
+            class="w-1/4 border-2 border-yellow-500 rounded-xl hover:bg-yellow-100">
+            🛒
+        </button>
+
+        <button onclick="buyNow(6)"
+            class="w-3/4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl py-2 font-bold">
+            Beli Sekarang
+        </button>
+    </div>
+</div>
+<!-- Produk 7 -->
+<div class="product-card bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+    <img src="image/pulpen.jpg" class="w-full h-56 object-cover rounded-xl">
+
+    <h3 class="font-bold text-lg mt-4">
+        Pulpen 10 Warna Nailong
+    </h3>
+
+    <p class="text-yellow-600 text-2xl font-bold mt-2">
+        Rp21.500
+    </p>
+
+    <div class="flex items-center mt-2">
+        <span class="text-yellow-400">★★★★★</span>
+        <span class="ml-2 text-gray-500 text-sm">
+            5.0 (400 Terjual)
+        </span>
+    </div>
+
+    <div class="flex gap-2 mt-5">
+        <button onclick="addToCart(7)"
+            class="w-1/4 border-2 border-yellow-500 rounded-xl hover:bg-yellow-100">
+            🛒
+        </button>
+
+        <button onclick="buyNow(7)"
+            class="w-3/4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl py-2 font-bold">
+            Beli Sekarang
+        </button>
+    </div>
+</div>
+
+<!-- Produk 8 -->
+<div class="product-card bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+    <img src="image/strap.jpg" class="w-full h-56 object-cover rounded-xl">
+
+    <h3 class="font-bold text-lg mt-4">
+        Strap Handphone Nailong
+    </h3>
+
+    <p class="text-yellow-600 text-2xl font-bold mt-2">
+        Rp20.000
+    </p>
+
+    <div class="flex items-center mt-2">
+        <span class="text-yellow-400">★★★★★</span>
+        <span class="ml-2 text-gray-500 text-sm">
+            4.9 (320 Terjual)
+        </span>
+    </div>
+
+    <div class="flex gap-2 mt-5">
+        <button onclick="addToCart(8)"
+            class="w-1/4 border-2 border-yellow-500 rounded-xl hover:bg-yellow-100">
+            🛒
+        </button>
+
+        <button onclick="buyNow(8)"
+            class="w-3/4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl py-2 font-bold">
+            Beli Sekarang
+        </button>
+    </div>
+</div>
+
+<!-- Produk 9 -->
+<div class="product-card bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+    <img src="image/totebag.jpg" class="w-full h-56 object-cover rounded-xl">
+
+    <h3 class="font-bold text-lg mt-4">
+        Totebag Custom Nailong
+    </h3>
+
+    <p class="text-yellow-600 text-2xl font-bold mt-2">
+        Rp50.000
+    </p>
+
+    <div class="flex items-center mt-2">
+        <span class="text-yellow-400">★★★★★</span>
+        <span class="ml-2 text-gray-500 text-sm">
+            4.8 (200 Terjual)
+        </span>
+    </div>
+
+    <div class="flex gap-2 mt-5">
+        <button onclick="addToCart(9)"
+            class="w-1/4 border-2 border-yellow-500 rounded-xl hover:bg-yellow-100">
+            🛒
+        </button>
+
+        <button onclick="buyNow(9)"
+            class="w-3/4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl py-2 font-bold">
+            Beli Sekarang
+        </button>
+    </div>
+</div>
+
+<!-- Produk 10 -->
+<div class="product-card bg-white rounded-2xl shadow-lg p-5 hover:shadow-xl transition">
+    <img src="image/tumbler.jpg" class="w-full h-56 object-cover rounded-xl">
+
+    <h3 class="font-bold text-lg mt-4">
+        Tumbler Karakter Nailong
+    </h3>
+
+    <p class="text-yellow-600 text-2xl font-bold mt-2">
+        Rp87.400
+    </p>
+
+    <div class="flex items-center mt-2">
+        <span class="text-yellow-400">★★★★★</span>
+        <span class="ml-2 text-gray-500 text-sm">
+            4.7 (150 Terjual)
+        </span>
+    </div>
+
+    <div class="flex gap-2 mt-5">
+        <button onclick="addToCart(10)"
+            class="w-1/4 border-2 border-yellow-500 rounded-xl hover:bg-yellow-100">
+            🛒
+        </button>
+
+        <button onclick="buyNow(10)"
+            class="w-3/4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-xl py-2 font-bold">
+            Beli Sekarang
+        </button>
+    </div>
+</div>
+
+</div>
+</section>
+<!-- ================= ULASAN ================= -->
+<section id="ulasan" class="bg-yellow-100 py-16 mt-16">
+
+    <div class="max-w-6xl mx-auto px-6">
+
+        <h2 class="text-3xl font-bold text-center text-yellow-600 mb-10">
+            💛 Ulasan Pelanggan
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-6">
+
+            <!-- Ulasan 1 -->
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/100?img=5"
+                        class="w-14 h-14 rounded-full">
+                    <div>
+                        <h3 class="font-bold">ayu mbrut</h3>
+                        <p class="text-yellow-400">★★★★★</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 mt-4">
+                    Produknya lucu banget 😍
+                    Bahannya bagus dan pengirimannya cepat.
+                    Bakal beli lagi di Nailongholic.id!
+                </p>
+            </div>
+
+            <!-- Ulasan 2 -->
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/100?img=12"
+                        class="w-14 h-14 rounded-full">
+                    <div>
+                        <h3 class="font-bold">ajayyy</h3>
+                        <p class="text-yellow-400">★★★★★</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 mt-4">
+                    Boneka Nailong sangat imut dan sesuai foto.
+                    Packing rapi, recommended banget 💛
+                </p>
+            </div>
+
+            <!-- Ulasan 3 -->
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+                <div class="flex items-center gap-4">
+                    <img src="https://i.pravatar.cc/100?img=20"
+                        class="w-14 h-14 rounded-full">
+                    <div>
+                        <h3 class="font-bold">caca cantik</h3>
+                        <p class="text-yellow-400">★★★★★</p>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 mt-4">
+                    Harga terjangkau, kualitas bagus,
+                    admin juga ramah. Terima kasih Nailongholic.id ❤️
+                </p>
+            </div>
+            <div class="bg-white rounded-2xl shadow-lg p-6 mt-10">
+
+    <h3 class="text-2xl font-bold text-yellow-600 mb-4">
+        ✍️ Beri Ulasan
+    </h3>
+
+    <input
+        type="text"
+        placeholder="Nama Anda"
+        class="w-full border rounded-xl p-3 mb-4">
+
+    <textarea
+        placeholder="Tulis ulasan Anda..."
+        class="w-full border rounded-xl p-3 h-32 mb-4"></textarea>
+
+    <button
+        class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-xl font-bold">
+        Kirim Ulasan
+    </button>
+
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+<!-- ================= FOOTER ================= -->
+<footer class="bg-yellow-400 text-white mt-16">
+
+    <div class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8">
+
+        <!-- Logo -->
+        <div>
+            <img src="image/logo.jpg"
+                 class="w-20 h-20 rounded-full object-cover mb-4">
+
+            <h2 class="text-2xl font-bold">
+                Nailongholic.id
+            </h2>
+
+            <p class="mt-2 text-yellow-100">
+                Temukan berbagai koleksi Nailong favoritmu dengan harga terbaik.
+                Belanja mudah, aman, dan terpercaya.
+            </p>
+        </div>
+
+        <!-- Menu -->
+        <div>
+            <h3 class="text-xl font-bold mb-4">
+                Menu
+            </h3>
+
+            <ul class="space-y-2">
+                <li><a href="#beranda" class="hover:underline">Beranda</a></li>
+                <li><a href="#produk" class="hover:underline">Produk</a></li>
+                <li><a href="#ulasan" class="hover:underline">Ulasan</a></li>
+                <li><a href="#kontak" class="hover:underline">Kontak</a></li>
+            </ul>
+        </div>
+
+        <!-- Kontak -->
+        <div id="kontak">
+            <h3 class="text-xl font-bold mb-4">
+                Hubungi Kami
+            </h3>
+
+            <p class="mb-2">
+                <i class="fa-solid fa-envelope mr-2"></i>
+                nailongholic@gmail.com
+            </p>
+
+            <p class="mb-2">
+                <i class="fa-solid fa-phone mr-2"></i>
+                0812-3456-7890
+            </p>
+
+            <p class="mb-4">
+                <i class="fa-solid fa-location-dot mr-2"></i>
+                Jakarta, Indonesia
+            </p>
+
+            <div class="flex gap-4 text-2xl">
+                <a href="#" class="hover:text-yellow-200">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="#" class="hover:text-yellow-200">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+
+                <a href="#" class="hover:text-yellow-200">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="border-t border-yellow-300 py-4 text-center text-sm">
+        © 2025 <strong>Nailongholic.id</strong> | All Rights Reserved 💛
+    </div>
+
+</footer>
+<script>
+
+if(localStorage.getItem("login")!="true"){
+    window.location.href="login.html";
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Nailongholic.id</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body class="bg-yellow-50">
+
+<div class="max-w-5xl mx-auto p-6">
+
+    <h1 class="text-4xl font-bold text-center text-yellow-600 mb-8">
+        💛 Checkout Nailongholic.id
+    </h1>
+
+    <div class="grid md:grid-cols-5 gap-8">
+
+        <!-- Form Pengiriman -->
+        <div class="md:col-span-3 bg-white rounded-2xl shadow-lg p-6">
+
+            <h2 class="text-2xl font-bold text-yellow-600 mb-5">
+                Alamat Pengiriman
+            </h2>
+
+            <input
+                type="text"
+                placeholder="Nama Lengkap"
+                class="w-full border rounded-xl p-3 mb-4">
+
+            <input
+                type="text"
+                placeholder="Nomor HP"
+                class="w-full border rounded-xl p-3 mb-4">
+
+            <textarea
+                placeholder="Alamat Lengkap"
+                class="w-full border rounded-xl p-3 mb-4 h-28"></textarea>
+
+            <div class="grid grid-cols-2 gap-4">
+
+                <input
+                    type="text"
+                    placeholder="Kota"
+                    class="border rounded-xl p-3">
+
+                <input
+                    type="text"
+                    placeholder="Kode Pos"
+                    class="border rounded-xl p-3">
+
+            </div>
+
+        </div>
+
+        <!-- Ringkasan -->
+        <div class="md:col-span-2">
+
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+
+    <h3 class="text-xl font-bold text-yellow-600 mb-4">
+        Ringkasan Pesanan
+    </h3>
+
+    <div class="flex justify-between mb-3">
+        <span>Produk</span>
+        <span id="namaProduk"></span>
+    </div>
+
+    <div class="flex justify-between mb-3">
+        <span>Harga</span>
+        <span id="hargaProduk"></span>
+    </div>
+
+    <div class="flex justify-between mb-3">
+        <span>Ongkir</span>
+        <span>Rp10.000</span>
+    </div>
+
+    <hr class="my-3">
+
+    <div class="flex justify-between text-xl font-bold">
+        <span>Total</span>
+        <span id="totalHarga" class="text-yellow-600"></span>
+    </div>
+
+</div>
+
+            <button
+                onclick="goToPayment()"
+                class="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-4 rounded-xl text-lg font-bold">
+
+                Pilih Metode Pembayaran →
+            </button>
+
+            <a href="cart.html"
+               class="block text-center mt-4 text-yellow-600 font-semibold hover:underline">
+
+                ← Kembali ke Keranjang
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+const produk = JSON.parse(localStorage.getItem("checkoutProduk"));
+
+if (produk) {
+
+    document.getElementById("namaProduk").innerText = produk.name;
+
+    document.getElementById("hargaProduk").innerText =
+        "Rp " + produk.price.toLocaleString("id-ID");
+
+    const total = produk.price + 10000;
+
+    document.getElementById("totalHarga").innerText =
+        "Rp " + total.toLocaleString("id-ID");
+
+}
+
+function goToPayment(){
+
+    window.location.href = "payment.html";
+
+}
+</script>
+</body>
+</html>
